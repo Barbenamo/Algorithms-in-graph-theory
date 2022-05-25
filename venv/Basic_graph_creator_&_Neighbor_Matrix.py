@@ -2,45 +2,48 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 
-G = nx.Graph()
-G.add_node('A')
-G.add_node('B')
-G.add_node('C')
-G.add_node('D')
-G.add_edges_from([('A', 'B'), ('A', 'C'), ('B', 'C'), ('C', 'D'), ('A', 'D')])
+def getnxGraph():
+    return G
+def getNeighborMatrix():
+    return table_data
 
-node_map = ('A', 'B', 'C', 'D')
-table_data = np.identity(node_map.__len__())
+
+G = nx.DiGraph()
+G.add_node('1', pos=(0, -100), name='1')
+G.add_node('2', pos=(100, 0), name='2')
+G.add_node('3', pos=(50, 100), name='3')
+G.add_node('4', pos=(-100, 0), name='4')
+# G.add_edges_from([('1', '3', weight = -2), ('3', '4', 2), ('4', '2', -1), ('2', '1', 4), ('2', '3', 3)])
+G.add_edge('1', '3', weight=-2)
+G.add_edge('3', '4', weight=2)
+G.add_edge('4', '2', weight=-1)
+G.add_edge('2', '1', weight=4)
+G.add_edge('2', '3', weight=3)
+node_map = ('1', '2', '3', '4')
+table_data = np.zeros((node_map.__len__(), node_map.__len__()))
 
 for row in range(table_data.__len__()):
     for col in range(table_data.__len__()):
-        if G.has_edge(node_map[col], node_map[row]):
-            table_data[row][col] = 1
+        if G.has_edge(node_map[row], node_map[col]):
+            u = node_map[col]
+            v = node_map[row]
+            if u != v:
+                table_data[row][col] = G[v][u]["weight"]
+                continue
+        table_data[row][col] = np.inf
 print(table_data)
 
-pos = nx.spring_layout(G)
-nx.draw_networkx_nodes(G, pos, node_size=500)
-nx.draw_networkx_edges(G, pos, edgelist=G.edges(), edge_color='black')
+T, parents = Floyd_Warshall(table_data)
+print(parents)
+print(T)
+
+
+weight = nx.get_edge_attributes(G, 'weight')
+pos = nx.get_node_attributes(G, 'pos')
+# pos = nx.spring_layout(G)
+name = nx.get_node_attributes(G, 'name')
+nx.draw_networkx_nodes(G, pos, node_size=500, alpha=1)
+nx.draw_networkx_edges(G, pos, edgelist=G.edges(), edge_color='black', label=weight)
 nx.draw_networkx_labels(G, pos)
+nx.draw_networkx_edge_labels(G, pos, edge_labels=weight)
 plt.show()
-
-def Floyd_Warshall(T):
-    n=len(T)
-    p = {}
-    T_old = T
-    for k in range(0,n):
-        for i in range(0,n):
-            for j in range(0,n):
-                if(T_old[i,j] > T_old[i,k] + T_old[k,j]):
-                    T[i,j] = T_old[i,k] + T_old[k,j]
-                    p[j,i] = k
-        T_old = T
-    return T, p
-
-
-# def print_hi(name):
-#     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-#
-#
-# if __name__ == '__main__':
-#     print_hi('PyCharm')

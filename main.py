@@ -1,26 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
-
-
-################################
-###       Floyd_Warshall     ###
-################################
-
-def Floyd_Warshall(T):
-    n = len(T)
-    p = {}
-    T_old = T
-    for k in range(0, n):
-        for i in range(0, n):
-            for j in range(0, n):
-                if i == j:
-                    T[i][j] = 0
-                if T_old[i, j] > T_old[i, k] + T_old[k, j]:
-                    T[i, j] = T_old[i, k] + T_old[k, j]
-                    p[j, i] = k
-        T_old = T
-    return T, p
+from Floyd_Warshall_Algo import Floyd_Warshall
 
 
 G = nx.DiGraph()
