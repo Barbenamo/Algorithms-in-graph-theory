@@ -10,6 +10,7 @@ def Floyd_Warshall(T):
             for j in range(0, n):
                 if i == j:
                     T[i][j] = 0
+                    continue
                 if T_old[i, j] > T_old[i, k] + T_old[k, j]:
                     T[i, j] = T_old[i, k] + T_old[k, j]
                     p[j, i] = k

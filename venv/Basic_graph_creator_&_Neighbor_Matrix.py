@@ -2,11 +2,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 
-def getnxGraph():
-    return G
-def getNeighborMatrix():
-    return table_data
-
 
 G = nx.DiGraph()
 G.add_node('1', pos=(0, -100), name='1')
