@@ -27,6 +27,12 @@ class NodeData:
         self.neighbors = {}
         self.guests = {}
 
+    def get_key(self):
+        return self.key
+
+    def get_location(self):
+        return self.location
+
     def add_nei(self, dest: int, weight: float):
         if self.has_nei(dest):
             return
