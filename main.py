@@ -12,6 +12,8 @@ from Reverse_Graph_creator import Reverse
 import timeit
 from Find_Graph_Diameter import diameter_dp
 from Find_Graph_Diameter import best
+from Find_Graph_Diameter import cycle_diameter_dp
+
 from Build_Tree_From_Degrees_Array import build_tree
 
 G = DiGraph()
@@ -30,11 +32,7 @@ G.add_edge(1, 2, 3)
 G.add_edge(2, 3, 1)
 G.add_edge(3, 0, 1)
 G.add_edge(3, 1, 2)
-# start = timeit.timeit()
-# print(dijkstra(2, 1, G))
-# end = timeit.timeit()
-# print(end - start)
-# start = timeit.timeit()
-# create_nx_graph(G)
-arr = [1, 2, 1, 3, 1, 2]
-print(build_tree(arr))
+arr = [7, -9, 2, 1]
+print()
+mat1, d1, seq1 = cycle_diameter_dp(arr)
+print(mat1, d1, seq1)

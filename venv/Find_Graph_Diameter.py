@@ -27,6 +27,36 @@ def diameter_dp(arr):
                 seq[1] = j
     return mat, d, seq
 
+def cycle_diameter_dp(arr):
+    n = len(arr)
+    d = 0
+    seq = [0,0]
+    mat = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n): #O(n^2)
+            if i == j:
+                mat[i][j] = arr[i]
+            if i + 1 < n:
+                mat[i][j] = mat[i][j-1] + arr[j]
+            if i>j:
+                mat[i][j] = 0
+            if mat[i][j] >= d:
+                d = mat[i][j]
+                seq[0] = i
+                seq[1] = j
+    for i in range(n):
+        for j in range(n):  # O(n^2)
+            if i > j:
+                if i - j == 1:
+                    mat[i][j] = mat[0][n-1]
+                    continue
+                mat[i][j] = mat[0][n-1] - mat[j+1][i-1]
+                if mat[i][j] >= d:
+                    d = mat[i][j]
+                    seq[0] = i
+                    seq[1] = j
+    return mat, d, seq
+
 def best(arr):
     count = 0
     flag = 0
@@ -47,3 +77,4 @@ def best(arr):
             sum = 0
             count = 0
     return max, seq
+
