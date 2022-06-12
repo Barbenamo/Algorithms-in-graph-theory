@@ -78,3 +78,10 @@ def best(arr):
             count = 0
     return max, seq
 
+def cycle_best(arr):
+    sum_straight = np.sum(arr)
+    negative_arr = arr
+    for i in range(len(arr)):
+        negative_arr[i] = -1*arr[i]
+    min_best = best(negative_arr)
+    return max(sum_straight + min_best[0],sum_straight)

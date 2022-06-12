@@ -13,7 +13,7 @@ import timeit
 from Find_Graph_Diameter import diameter_dp
 from Find_Graph_Diameter import best
 from Find_Graph_Diameter import cycle_diameter_dp
-
+from Find_Graph_Diameter import cycle_best
 from Build_Tree_From_Degrees_Array import build_tree
 
 G = DiGraph()
@@ -32,7 +32,5 @@ G.add_edge(1, 2, 3)
 G.add_edge(2, 3, 1)
 G.add_edge(3, 0, 1)
 G.add_edge(3, 1, 2)
-arr = [7, -9, 2, 1]
-print()
-mat1, d1, seq1 = cycle_diameter_dp(arr)
-print(mat1, d1, seq1)
+arr = [7, -9, -2, 1]
+print(cycle_best(arr))
