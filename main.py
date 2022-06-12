@@ -12,7 +12,7 @@ from Reverse_Graph_creator import Reverse
 import timeit
 from Find_Graph_Diameter import diameter_dp
 from Find_Graph_Diameter import best
-
+from Build_Tree_From_Degrees_Array import build_tree
 
 G = DiGraph()
 n0 = NodeData(0, (0, -100, 0))
@@ -36,15 +36,5 @@ G.add_edge(3, 1, 2)
 # print(end - start)
 # start = timeit.timeit()
 # create_nx_graph(G)
-arr = (1, 7, 3, -13, 2, 1, 10, -2, 1, 20)
-start = timeit.timeit()
-mat, d, seq = diameter_dp(arr)
-end = timeit.timeit()
-print(end - start)
-start = timeit.timeit()
-print(best(arr))
-end = timeit.timeit()
-print(end - start)
-print(mat)
-print(d)
-print(seq)
+arr = [1, 2, 1, 3, 1, 2]
+print(build_tree(arr))

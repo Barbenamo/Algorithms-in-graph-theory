@@ -1,8 +1,11 @@
 #This file contains a method to find the diameter of a straigh line graph (p).
 #The diameter of a graph is the most expensive route from a single node to another.
 #For the solution, the dynamic programming methood is useed.
-# The function gets an array of weights and calculates the most expensive sequence.
+# The diameter_dp function gets an array of weights and calculates the most expensive sequence.
 # The function return the matrix, the diagonal itself, and an array of 2 indicators for the sequence itself
+
+# The function best does the same thing, but has complexity of O(n).
+
 import numpy as np
 
 def diameter_dp(arr):
