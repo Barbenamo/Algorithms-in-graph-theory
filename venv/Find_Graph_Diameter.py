@@ -45,8 +45,3 @@ def best(arr):
             sum = 0
             count = 0
     return max, seq
-
-
-
-
-
