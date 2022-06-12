@@ -32,5 +32,5 @@ G.add_edge(1, 2, 3)
 G.add_edge(2, 3, 1)
 G.add_edge(3, 0, 1)
 G.add_edge(3, 1, 2)
-arr = [7, -9, -2, 1]
+arr = [1, 2, -3, 4, -7, 9]
 print(cycle_best(arr))
