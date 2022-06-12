@@ -4,16 +4,15 @@ from src.DiGraph import DiGraph
 from src.GraphElements import EdgeData
 from src.GraphElements import NodeData
 
-
 def Reverse(g):
-    gr = DiGraph()
-    for i in range(g.v_size()):
+    gr = DiGraph() #initialize graph
+    for i in range(g.v_size()): # add each node in g to gr
         n = g.get_node(i)
         s = n.get_key()
         t = n.get_location()
         gr.add_node(s, t)
 
-    for i in range(g.v_size()):
+    for i in range(g.v_size()):# add the reverse edge between each two connected nodes
         n = gr.get_node(i)
         s = n.get_key()
         for j in g.all_out_edges_of_node(i).items():

@@ -9,6 +9,10 @@ from src.GraphElements import EdgeData
 from src.GraphElements import NodeData
 from create_nx_graph_from_DiGraph import create_nx_graph
 from Reverse_Graph_creator import Reverse
+import timeit
+from Find_Graph_Diameter import diameter_dp
+from Find_Graph_Diameter import best
+
 
 G = DiGraph()
 n0 = NodeData(0, (0, -100, 0))
@@ -23,10 +27,24 @@ G.add_node(n3.key, n3.location)
 
 G.add_edge(0, 1, 0)
 G.add_edge(1, 2, 3)
-G.add_edge(2, 3, 4)
+G.add_edge(2, 3, 1)
 G.add_edge(3, 0, 1)
 G.add_edge(3, 1, 2)
-gr = Reverse(G)
-create_nx_graph(G)
-create_nx_graph(gr)
-
+# start = timeit.timeit()
+# print(dijkstra(2, 1, G))
+# end = timeit.timeit()
+# print(end - start)
+# start = timeit.timeit()
+# create_nx_graph(G)
+arr = (-2, 3, -4, -1, -2, 1, 5, 3)
+start = timeit.timeit()
+mat, d, seq = diameter_dp(arr)
+end = timeit.timeit()
+print(end - start)
+start = timeit.timeit()
+print(best(arr))
+end = timeit.timeit()
+print(end - start)
+print(mat)
+print(d)
+print(seq)
