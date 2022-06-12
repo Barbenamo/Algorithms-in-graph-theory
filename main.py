@@ -10,11 +10,9 @@ from src.GraphElements import NodeData
 from create_nx_graph_from_DiGraph import create_nx_graph
 from Reverse_Graph_creator import Reverse
 import timeit
-from Find_Graph_Diameter import diameter_dp
-from Find_Graph_Diameter import best
-from Find_Graph_Diameter import cycle_diameter_dp
-from Find_Graph_Diameter import cycle_best
+from Find_Graph_Diameter import best, diameter_dp, cycle_diameter_dp, cycle_best
 from Build_Tree_From_Degrees_Array import build_tree
+from Find_Max_Sub_Matrix import Sub_Matrix_dp
 
 G = DiGraph()
 n0 = NodeData(0, (0, -100, 0))
@@ -32,5 +30,11 @@ G.add_edge(1, 2, 3)
 G.add_edge(2, 3, 1)
 G.add_edge(3, 0, 1)
 G.add_edge(3, 1, 2)
-arr = [1, 2, -3, 4, -7, 9]
-print(cycle_best(arr))
+A = [[2, 1, -3, -4, 5],
+     [0, 6, 3, 4, 1],
+     [2, -2, -1, 4, -5],
+     [-3, 3, 1, 0, 3]]
+H, index, sum_ = Sub_Matrix_dp(A)
+print('\n'.join(['\t'.join([str(cell) for cell in row]) for row in A]))
+print(index)
+print(sum_)
