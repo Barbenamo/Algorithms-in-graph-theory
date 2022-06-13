@@ -180,3 +180,8 @@ class DiGraph(GraphInterface):
                 edges.append(edge_info)
         view_graph = {"Nodes": nodes, "Edges": edges}
         return view_graph
+
+    def reset_color(self):
+        for i in self.get_all_v():
+            self.get_node(i).info = "white"
+        return self
