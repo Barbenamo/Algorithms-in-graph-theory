@@ -5,11 +5,13 @@
 # WHITE - means that the vertex was not discoverd before.
 # GREY - means that we discoverd it but did not attented it
 # BLACK - means we already checked that node.
+# Complexity - O(|V| + |E|)
 
 import numpy as np
 from queue import Queue, PriorityQueue
 
 def BFS(G, src):
+    cc = np.zeros(G.v_size())
     q = PriorityQueue()
     d = np.zeros(G.v_size())
     f = np.zeros(G.v_size())
@@ -30,4 +32,15 @@ def BFS(G, src):
                 f[dest] = u
                 q.put(dest)
         G.get_node(dest).info = 'black'
+    G.reset_color()
     return d, f
+
+def connected_components(G, s):
+    count = 1
+    cc = np.zeros(G.v_size())
+    d, f = BFS(G,s)
+    for i in range(len(d)):
+        if d[i] == np.inf:
+            d,f = BFS(G,i)
+            count += 1
+    return count
