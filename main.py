@@ -24,7 +24,6 @@ n4 = NodeData(4, (-50, 300, 0))
 n5 = NodeData(5, (30, 500, 0))
 n6 = NodeData(6, (500, 500, 0))
 
-
 G.add_node(n0.key, n0.location)
 G.add_node(n1.key, n1.location)
 G.add_node(n2.key, n2.location)
@@ -32,7 +31,6 @@ G.add_node(n3.key, n3.location)
 G.add_node(n4.key, n4.location)
 G.add_node(n5.key, n5.location)
 G.add_node(n6.key, n6.location)
-
 
 G.add_edge(0, 1, 0)
 G.add_edge(1, 2, 3)
@@ -43,10 +41,12 @@ G.add_edge(3, 1, 2)
 G.add_edge(4, 5, 1)
 G.add_edge(5, 6, 2)
 G.add_edge(6, 4, 3)
+
 d, f = BFS(G, 0)
 print(d)
 print(f)
-count = connected_components(G, 0)
+count, cc = connected_components(G, 0)
 print(count)
+print(cc)
 create_nx_graph(G)
 

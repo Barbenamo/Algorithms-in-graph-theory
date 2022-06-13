@@ -14,14 +14,14 @@ def BFS(G, src):
     cc = np.zeros(G.v_size())
     q = PriorityQueue()
     d = np.zeros(G.v_size())
-    f = np.zeros(G.v_size())
+    f = {}
     for i in G.get_all_v():
         n = G.get_node(i)
         d[i] = np.inf
-        f[i] = None
+        f[i] = (None, None)
     G.get_node(src).info = 'grey'
     d[src] = 0
-    f[src] = None
+    f[src] = {None, None}
     q.put(src)
     while not q.empty():
         u = q.get()
@@ -29,7 +29,7 @@ def BFS(G, src):
             if G.get_node(dest).info == 'white':
                 G.get_node(dest).info =  'grey'
                 d[dest] = d[u] + w #for finding the weights
-                f[dest] = u
+                f[dest] = [dest,u]
                 q.put(dest)
         G.get_node(dest).info = 'black'
     G.reset_color()
@@ -40,7 +40,10 @@ def connected_components(G, s):
     cc = np.zeros(G.v_size())
     d, f = BFS(G,s)
     for i in range(len(d)):
-        if d[i] == np.inf:
+
+        if  d[i] == np.inf:
             d,f = BFS(G,i)
             count += 1
-    return count
+        if not d[i] == np.inf:
+            cc[i] = count
+    return count, cc
