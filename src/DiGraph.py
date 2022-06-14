@@ -185,3 +185,8 @@ class DiGraph(GraphInterface):
         for i in self.get_all_v():
             self.get_node(i).info = "white"
         return self
+
+    def reset_tag(self):
+        for i in self.get_all_v():
+            self.get_node(i).tag = 0
+        return self

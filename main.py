@@ -41,10 +41,8 @@ G.add_edge(3, 1, 2)
 G.add_edge(4, 5, 1)
 G.add_edge(5, 6, 2)
 G.add_edge(6, 4, 3)
-for i in G.get_all_v():
-    print(G.get_node(i).parent)
-DFS(G)
-for i in G.get_all_v():
-    print(G.get_node(i).parent)
+
 create_nx_graph(G)
+
+
 

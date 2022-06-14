@@ -1,5 +1,6 @@
 # The DFS algorithm (Depth first search) recieves a graph, scans it and returns raw data that uses different algorithms.
 # The algorithm starts from a random vertex on the graph and uses recursion to traverse the graph.
+# Complexity - O(|V|+|E|)
 import numpy as np
 
 def DFS(G):
