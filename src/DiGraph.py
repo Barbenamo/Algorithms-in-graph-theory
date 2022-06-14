@@ -1,4 +1,5 @@
 from src.GraphElements import NodeData as ND
+from src.GraphElements import EdgeData as ED
 from src.GraphInterface import GraphInterface
 import json
 

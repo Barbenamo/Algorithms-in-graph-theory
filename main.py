@@ -8,13 +8,14 @@ from src.DiGraph import DiGraph
 from src.GraphElements import EdgeData
 from src.GraphElements import NodeData
 from create_nx_graph_from_DiGraph import create_nx_graph
-from Reverse_Graph_creator import Reverse
 import timeit
 from Find_Graph_Diameter import best, diameter_dp, cycle_diameter_dp, cycle_best
 from Build_Tree_From_Degrees_Array import build_tree
 from Find_Max_Sub_Matrix import Sub_Matrix_dp
 from BFS_Algorithm import BFS, connected_components
 from DFS_Algorithm import DFS
+from Bottle_Problem import Bottle_problem_matix_create, Bottle_problem
+from Graph_functions import create_undirected_graph, is_directed, reverse
 
 G = DiGraph()
 n0 = NodeData(0, (0, -100, 0))
@@ -34,15 +35,11 @@ G.add_node(n5.key, n5.location)
 G.add_node(n6.key, n6.location)
 
 G.add_edge(0, 1, 0)
-G.add_edge(1, 2, 3)
-G.add_edge(2, 3, 1)
-G.add_edge(3, 0, 1)
-G.add_edge(3, 1, 2)
-G.add_edge(4, 5, 1)
-G.add_edge(5, 6, 2)
-G.add_edge(6, 4, 3)
-
+G.add_edge(1, 2, 0)
+G.add_edge(2, 3, 0)
+G.add_edge(3, 0, 0)
+G.add_edge(3, 1, 0)
+G.add_edge(4, 5, 0)
+G.add_edge(5, 6, 0)
+G.add_edge(6, 4, 0)
 create_nx_graph(G)
-
-
-
