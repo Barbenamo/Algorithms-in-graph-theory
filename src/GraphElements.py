@@ -22,7 +22,7 @@ class NodeData:
         self.location = tuple(location)
         self.parent = None
         self.weight = float("inf")
-        self.tag = -1
+        self.tag = 0
         self.info = "white"
         self.neighbors = {}
         self.guests = {}

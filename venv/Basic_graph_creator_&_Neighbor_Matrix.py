@@ -2,45 +2,59 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 from Floyd_Warshall_Algo import Floyd_Warshall
+from src import DiGraph, GraphElements
 
+def Create_simple_Binary_Tree():
+    # simple Binary tree:
+    G = DiGraph()
+    n0 = NodeData(0, (0, 500, 0))
+    n1 = NodeData(1, (50, 400, 0))
+    n2 = NodeData(2, (-50, 400, 0))
+    n3 = NodeData(3, (-100, 300, 0))
+    n4 = NodeData(4, (-50, 300, 0))
+    n5 = NodeData(5, (50, 300, 0))
+    n6 = NodeData(6, (100, 300, 0))
 
-G = nx.Graph()
-G.add_node(1, pos=(0, -100), name='1')
-G.add_node(2, pos=(100, 0), name='2')
-G.add_node(3, pos=(50, 100), name='3')
-G.add_node(4, pos=(-100, 0), name='4')
-# G.add_edges_from([('1', '3', weight = -2), ('3', '4', 2), ('4', '2', -1), ('2', '1', 4), ('2', '3', 3)])
-G.add_edge(1, 3, weight=2)
-G.add_edge(3, 4, weight=5)
-G.add_edge(4, 2, weight=1)
-G.add_edge(2, 1, weight=4)
-G.add_edge(2, 3, weight=3)
-node_map = (1, 2, 3, 4)
-table_data = np.zeros((node_map.__len__(), node_map.__len__()))
+    G.add_node(n0.key, n0.location)
+    G.add_node(n1.key, n1.location)
+    G.add_node(n2.key, n2.location)
+    G.add_node(n3.key, n3.location)
+    G.add_node(n4.key, n4.location)
+    G.add_node(n5.key, n5.location)
+    G.add_node(n6.key, n6.location)
 
-for row in range(table_data.__len__()):
-    for col in range(table_data.__len__()):
-        if G.has_edge(node_map[row], node_map[col]):
-            u = node_map[col]
-            v = node_map[row]
-            if u != v:
-                table_data[row][col] = G[v][u]["weight"]
-                continue
-        table_data[row][col] = np.inf
-        if row == col:
-            table_data[row][col] = 0
+    G.add_edge(0, 1, 0)
+    G.add_edge(0, 2, 0)
+    G.add_edge(1, 5, 0)
+    G.add_edge(1, 6, 0)
+    G.add_edge(2, 3, 0)
+    G.add_edge(2, 4, 0)
+    return G
 
-print(table_data)
-T, parents = Floyd_Warshall(table_data)
-print(parents)
-print(T)
+def Create_Tree():
+    # simple tree:
+    G = DiGraph()
+    n0 = NodeData(0, (0, 0, 0))
+    n1 = NodeData(1, (50, 400, 0))
+    n2 = NodeData(2, (-50, 400, 0))
+    n3 = NodeData(3, (-100, 300, 0))
+    n4 = NodeData(4, (-50, 300, 0))
+    n5 = NodeData(5, (50, 300, 0))
+    n6 = NodeData(6, (100, 300, 0))
 
-weight = nx.get_edge_attributes(G, 'weight')
-pos = nx.get_node_attributes(G, 'pos')
-# pos = nx.spring_layout(G)
-name = nx.get_node_attributes(G, 'name')
-nx.draw_networkx_nodes(G, pos, node_size=500, alpha=1)
-nx.draw_networkx_edges(G, pos, edgelist=G.edges(), edge_color='black', label=weight)
-nx.draw_networkx_labels(G, pos)
-nx.draw_networkx_edge_labels(G, pos, edge_labels=weight)
-plt.show()
+    G.add_node(n0.key, n0.location)
+    G.add_node(n1.key, n1.location)
+    G.add_node(n2.key, n2.location)
+    G.add_node(n3.key, n3.location)
+    G.add_node(n4.key, n4.location)
+    G.add_node(n5.key, n5.location)
+    G.add_node(n6.key, n6.location)
+
+    G.add_edge(0, 1, 0)
+    G.add_edge(0, 2, 0)
+    G.add_edge(1, 5, 0)
+    G.add_edge(1, 6, 0)
+    G.add_edge(2, 3, 0)
+    G.add_edge(2, 4, 0)
+    return G
+

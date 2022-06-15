@@ -47,3 +47,9 @@ def reverse(g):
         for j in g.all_out_edges_of_node(i).items():
              gr.add_edge(j[0], s, j[1])
     return gr
+# This method updates each degree of vertex in graph G using the tag and neighbors
+def update_degrees(G):
+    for i in G.get_all_v():
+        n = G.get_node(i)
+        n.tag = len(n.neighbors) + len(n.guests)
+    return
