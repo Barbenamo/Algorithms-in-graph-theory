@@ -2,6 +2,8 @@ import queue
 from create_nx_graph_from_DiGraph import create_nx_graph
 from Graph_functions import update_degrees
 
+# This method returns the graph diameter - which is the largest distance between two vertices.
+# NOTE: this method changes the graph!
 
 def fire(G):
     count = 0

@@ -2,6 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from queue import Queue, PriorityQueue
 import numpy as np
+from disjoint_set import DisjointSet
 from Floyd_Warshall_Algo import Floyd_Warshall
 from Dijkstras_Shortest_Path_Algorithm import dijkstra
 from src.DiGraph import DiGraph
@@ -15,8 +16,10 @@ from Find_Max_Sub_Matrix import Sub_Matrix_dp
 from BFS_Algorithm import BFS, connected_components
 from DFS_Algorithm import DFS
 from Bottle_Problem import Bottle_problem_matix_create, Bottle_problem
-from Graph_functions import create_undirected_graph, is_directed, reverse, update_degrees
+from Graph_functions import create_undirected_graph, is_directed, reverse, update_degrees,check_Euler_circle
 from fire import fire
+from MST_functions import Reverse_kruskal
+
 
 # simple tree:
 G = DiGraph()
@@ -36,18 +39,11 @@ G.add_node(n4.key, n4.location)
 G.add_node(n5.key, n5.location)
 G.add_node(n6.key, n6.location)
 
-
-G.add_edge(0, 1, 0)
-G.add_edge(0, 2, 0)
-G.add_edge(1, 5, 0)
-G.add_edge(1, 6, 0)
-G.add_edge(2, 3, 0)
-G.add_edge(2, 4, 0)
-create_nx_graph(G)
-
-
-update_degrees(G)
-diameter = fire(G)
-print(diameter)
-create_nx_graph(G)
-
+G.add_edge(0, 1, 1)
+G.add_edge(0, 2, 2)
+G.add_edge(1, 5, 3)
+G.add_edge(1, 6, 4)
+G.add_edge(2, 3, 5)
+G.add_edge(2, 4, 6)
+G.add_edge(0, 5, 6)
+G.add_edge(5, 0, 6)

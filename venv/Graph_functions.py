@@ -53,3 +53,13 @@ def update_degrees(G):
         n = G.get_node(i)
         n.tag = len(n.neighbors) + len(n.guests)
     return
+
+def check_Euler_circle(G):
+    count = 0
+    update_degrees(G)
+    for i in G.get_all_v():
+        if G.get_node(i).tag % 2 != 0:
+            count += 1
+    if count <= 2:
+        return True
+    return False
