@@ -14,4 +14,4 @@ here are the classes of this data structure:
 | ------|:-----------:|
 | GraphElements| contains two classes, NodeData, which represents the vertex on the graph, and EdgeData, which represents the edge connecting two vertices. |
 | DiGraph | this class contains various methods that can be used on the graph, such as adding/deleting a node, connects/disconnect vertices via edges etc. |
-| GraphAlgo|this class contains more complex method that can be apllied on the graph, such as shortest-path algorithm and Tarjan SCC algorithm.|
+
